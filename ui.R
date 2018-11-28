@@ -19,7 +19,7 @@ shinyUI(fluidPage(
     mainPanel(
       tabsetPanel(
         type = "tabs",
-        tabPanel("Default", plotOutput("distPlot"), p("fake plot")),
+        tabPanel("Welcome!", p("cloud")),
         tabPanel("Employment"),
         tabPanel("Wages"),
         tabPanel("Gender"),
