@@ -19,7 +19,7 @@ shinyUI(fluidPage(
     mainPanel(
       tabsetPanel(
         type = "tabs",
-        tabPanel("Welcome!", p("cloud")),
+        tabPanel("Welcome!", p("word cloud")),
         tabPanel("Employment"),
         tabPanel("Wages"),
         tabPanel("Gender"),
