@@ -8,7 +8,7 @@ majors_list <- read.csv("data/majors-list.csv")
 shinyServer(function(input, output, session) {
   
   
-  updateSelectInput(session, "select", choices = majors_list$Major)
+  updateSelectInput(session, "select", choices = split(majors_list$Major, majors_list$Major_Category))
   
   
 })
