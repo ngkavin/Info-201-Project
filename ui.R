@@ -1,12 +1,8 @@
 library(shiny)
 
-# Define UI for application that draws a histogram
 shinyUI(fluidPage(
-
-  # Application title
   titlePanel("Exploring College Majors"),
 
-  # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
       selectizeInput("select",
@@ -23,7 +19,7 @@ shinyUI(fluidPage(
         tabPanel("Employment"),
         tabPanel("Wages"),
         tabPanel("Gender"),
-        tabPanel("Popularity")
+        tabPanel("Popularity", plotlyOutput("popularity_plot"), actionButton("toggle", label = "Toggle Legend"))
       )
     )
   )
