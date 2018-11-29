@@ -1,9 +1,31 @@
 library(shiny)
 library(plotly)
+
+#install.packages("tm")
+#install.packages("SnowballC")
+#install.packages("wordcloud")
+#install.packages("RColorBrewer")
+#install.packages("RCurl")
+#install.packages("XML")
+library(dplyr)
+library(tm)
+library(SnowballC)
+library(wordcloud)
+library(RColorBrewer)
+library(RCurl)
+library(XML)
+
 suppressMessages(library(dplyr))
 source("scripts.R")
 
 shinyServer(function(input, output, session) {
+  
+  # Displays a word cloud of the top 20 popular majors
+  output$word_cloud <- renderPlot({
+    wordcloud(words = majors_twenty$Major, freq = majors_twenty$Total, min.freq = 1,
+              scale=c(3,.1), max.words=200, random.order=FALSE, rot.per=0.5, 
+              colors=brewer.pal(8, "Dark2"))
+  })
   
   updateSelectInput(session, "select", choices = split(majors_list, all_ages$Major_category), selected = r_major)
   
@@ -48,5 +70,6 @@ shinyServer(function(input, output, session) {
     } else {p}
     
   })
+  
 
 })
