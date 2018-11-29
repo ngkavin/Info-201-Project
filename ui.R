@@ -1,3 +1,4 @@
+library(plotly)
 library(shiny)
 
 shinyUI(fluidPage(
@@ -9,7 +10,8 @@ shinyUI(fluidPage(
         label = "Enter a Major",
         choices = NULL,
         options = list(maxItems = 1, maxOptions = 5, items = NULL, openOnFocus = FALSE)
-      )
+      ),
+      actionButton("randomize", label = "Randomize")
     ),
 
     mainPanel(
