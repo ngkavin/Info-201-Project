@@ -1,5 +1,6 @@
 library(plotly)
 library(shiny)
+library(dplyr)
 
 shinyUI(fluidPage(
   titlePanel("Exploring College Majors"),
@@ -17,7 +18,7 @@ shinyUI(fluidPage(
     mainPanel(
       tabsetPanel(
         type = "tabs",
-        tabPanel("Welcome!", p("word cloud")),
+        tabPanel("Welcome!", plotOutput("word_cloud")),
         tabPanel("Employment"),
         tabPanel("Wages"),
         tabPanel("Gender"),
