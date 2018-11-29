@@ -27,7 +27,7 @@ shinyServer(function(input, output, session) {
               colors=brewer.pal(8, "Dark2"))
   })
   
-  updateSelectInput(session, "select", choices = split(majors_list, all_ages$Major_category), selected = r_major)
+  updateSelectInput(session, "select", choices = split(majors_list, all_ages$Major_category))
   
   # Randomizes selected major if the randomize button is pressed
   observeEvent(input$randomize, {
@@ -50,12 +50,7 @@ shinyServer(function(input, output, session) {
         xaxis = list(title = "Median Salary ($)"),
         yaxis = list(title = "# of Graduates")
         )
-    # Hides/Shows the legend if corresponding button is pressed
-    if (input$toggle %% 2 == 0) {
-      p %>% layout(showlegend = TRUE)
-    } else {
-      p %>% layout(showlegend = FALSE)
-    }
+    
     
     # Adds a marker to the plot indicating where the selected major is
     if (input$select != "") {
@@ -69,6 +64,12 @@ shinyServer(function(input, output, session) {
       # Removes marker if search box is cleared
     } else {p}
     
+    # Hides/Shows the legend if corresponding button is pressed
+    if (input$toggle %% 2 == 0) {
+      p %>% layout(showlegend = TRUE)
+    } else {
+      p %>% layout(showlegend = FALSE)
+    }
   })
   
 
