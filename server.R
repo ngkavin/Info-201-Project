@@ -1,14 +1,17 @@
 library(shiny)
 library(plotly)
 suppressMessages(library(dplyr))
-
-all_ages <- read.csv("data/all-ages.csv", stringsAsFactors = FALSE)
-majors_list <- sapply(tolower(all_ages$Major), tools::toTitleCase)
-majors_list <- as.data.frame(majors_list)$majors_list
+source("scripts.R")
 
 shinyServer(function(input, output, session) {
   
-  updateSelectInput(session, "select", choices = split(majors_list, all_ages$Major_category))
+  updateSelectInput(session, "select", choices = split(majors_list, all_ages$Major_category), selected = r_major)
+  
+  # Randomizes selected major if the randomize button is pressed
+  observeEvent(input$randomize, {
+    r_major <- get_random_major()
+    updateSelectInput(session, "select", selected = r_major)
+  })
   
   # Creates the popularity vs median salary plot with plotly
   output$popularity_plot <- renderPlotly({
