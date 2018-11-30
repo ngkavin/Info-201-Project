@@ -14,6 +14,8 @@ library(wordcloud)
 library(RColorBrewer)
 library(RCurl)
 library(XML)
+library(wordcloud2)
+
 
 suppressMessages(library(dplyr))
 source("scripts.R")
@@ -22,9 +24,25 @@ shinyServer(function(input, output, session) {
   
   # Displays a word cloud of the top 20 popular majors
   output$word_cloud <- renderPlot({
-    wordcloud(words = majors_twenty$Major, freq = majors_twenty$Total, min.freq = 1,
-              scale=c(3,.1), max.words=200, random.order=FALSE, rot.per=0.5, 
-              colors=brewer.pal(8, "Dark2"))
+    majors <- wordcloud(words = top_majors$Major, freq = top_majors$Total, min.freq = 1,
+              scale=c(9,.1), max.words=200, random.order=FALSE, random.color = TRUE, rot.per=.0,
+              colors=c("#64EDD9",
+                       "#5FE6CD",
+                       "#5AE0C1",
+                       "#55D9B5",
+                       "#50D3A9",
+                       "#4BCC9D",
+                       "#46C691",
+                       "#41BF85",
+                       "#3CB979",
+                       "#37B36D",
+                       "#32AC61",
+                       "#2DA655",
+                       "#289F49",
+                       "#1E9231",
+                       "#198C25",
+                       "#15861A"))
+
   })
   
   updateSelectInput(session, "select", choices = split(majors_list, grad$Major_category))
