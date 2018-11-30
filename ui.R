@@ -1,8 +1,10 @@
 library(plotly)
 library(shiny)
 library(dplyr)
+source("text.R")
 
 shinyUI(fluidPage(
+  #theme = "bootstrap.css",
   titlePanel("Exploring College Majors"),
 
   sidebarLayout(
@@ -25,17 +27,19 @@ shinyUI(fluidPage(
                     choices = list("25th Percentile" = "P25", 
                                    "50th Percentile" = "median", 
                                    "75th Percentile" = "P75"),
-                    selected = "median")
+                    selected = "median"),
+        actionButton("toggle", label = "Toggle Legend")
       )
+      
     ),
-
+  
     mainPanel(
       tabsetPanel(
         id = "tabs",
         tabPanel("Welcome!", plotOutput("word_cloud")),
         tabPanel("Employment"),
         tabPanel("Gender"),
-        tabPanel("Popularity and Wages", plotlyOutput("popularity_plot"), actionButton("toggle", label = "Toggle Legend"))
+        tabPanel("Popularity and Wages", HTML("<br>"), plotlyOutput("popularity_plot"), tags$br(), tags$p(pop1))
       )
     )
   )

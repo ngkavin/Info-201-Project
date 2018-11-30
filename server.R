@@ -49,6 +49,7 @@ shinyServer(function(input, output, session) {
       color = ~Major_category
       ) %>% config(displayModeBar = FALSE) %>% 
       layout(
+        title = "Does a More Popular Major Equal Higher Wages?",
         xaxis = list(title = "Wages ($)"),
         yaxis = list(title = paste0("# of Total", ifelse(input$status == "Grad", "Graduates", "Undergraduates")))
       )
