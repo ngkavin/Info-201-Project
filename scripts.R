@@ -10,6 +10,6 @@ majors_list <- as.data.frame(majors_list, stringsAsFactors = FALSE)$majors_list
 get_random_major <- function() {majors_list[sample(1:length(majors_list), 1)]}
 r_major <- get_random_major()
 
-# Filters out the all_ages dataset to just Majors and their total
+# Filters out the all_ages dataset to just Majors and their total in descending order
 majors <- select(all_ages, Major, Major_category, Total)
 top_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
