@@ -37,7 +37,8 @@ shinyUI(fluidPage(
     mainPanel(
       tabsetPanel(
         id = "tabs",
-        tabPanel("Welcome!", plotOutput("word_cloud")),
+        type = "tabs",
+        tabPanel("Welcome!", plotOutput("word_cloud", width = "910", height = "870")),
         tabPanel("Employment"),
         tabPanel("Gender"),
         tabPanel("Popularity and Wages", HTML("<br>"), plotlyOutput("popularity_plot"), tags$br(), tags$p(pop1))
