@@ -15,7 +15,7 @@ shinyUI(fluidPage(
       actionButton("randomize", label = "Randomize"),
       conditionalPanel(
         HTML("<br>"),
-        condition = "input.tabs == 'Popularity'",
+        condition = "input.tabs == 'Popularity and Wages'",
         selectInput("status",
                     label = "Select Graduate Status",
                     choices = list("Graduate" = "Grad", "Undergraduate" = "Nongrad"),
