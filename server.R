@@ -1,20 +1,8 @@
 library(shiny)
 library(plotly)
-
-#install.packages("tm")
-#install.packages("SnowballC")
-#install.packages("wordcloud")
-#install.packages("RColorBrewer")
-#install.packages("RCurl")
-#install.packages("XML")
 library(dplyr)
-library(tm)
-library(SnowballC)
 library(wordcloud)
-library(RColorBrewer)
-library(RCurl)
-library(XML)
-library(wordcloud2)
+
 
 
 suppressMessages(library(dplyr))
