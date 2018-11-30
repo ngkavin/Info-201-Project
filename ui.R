@@ -4,8 +4,10 @@ library(dplyr)
 source("text.R")
 
 shinyUI(fluidPage(
-  #theme = "bootstrap.css",
-  titlePanel("Exploring College Majors"),
+  theme = "bootstrap.css",
+  tags$br(),
+  tags$h1(class="display-4", "Exploring College Majors"),
+  tags$br(),
 
   sidebarLayout(
     sidebarPanel(
@@ -30,7 +32,6 @@ shinyUI(fluidPage(
                     selected = "median"),
         actionButton("toggle", label = "Toggle Legend")
       )
-      
     ),
   
     mainPanel(
