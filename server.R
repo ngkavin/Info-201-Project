@@ -10,7 +10,7 @@ source("scripts.R")
 
 shinyServer(function(input, output, session) {
   
-  # Displays a word cloud of the top 20 popular majors
+  # Displays a word cloud of majors based on popularity
   output$word_cloud <- renderPlot({
     majors <- wordcloud(words = top_majors$Major, freq = top_majors$Total, min.freq = 1,
               scale=c(9,.1), max.words=200, random.order=FALSE, random.color = TRUE, rot.per=.0,
