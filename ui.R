@@ -12,7 +12,7 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       selectizeInput("select",
-        label = "Enter a Major",
+        label = "Search For a Major",
         choices = NULL,
         options = list(maxItems = 1, maxOptions = 5, items = NULL, openOnFocus = FALSE)
       ),
