@@ -12,4 +12,4 @@ r_major <- get_random_major()
 
 # Filters out the all_ages dataset to just Majors and their total in descending order
 majors <- select(all_ages, Major, Major_category, Total)
-top_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
+all_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
