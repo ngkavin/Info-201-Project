@@ -16,6 +16,7 @@ majors <- select(all_ages, Major, Major_category, Total)
 
 # Reads in Recent Grads data file 
 recent_grads <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
+majors <- filter(recent_grads, Major == toupper("Forestry"))
 
 
 
