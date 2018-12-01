@@ -30,3 +30,10 @@ file_path <- "data/twenty_majors.csv"
 majors_twenty <- read.csv("data/twenty_majors.csv", stringsAsFactors = FALSE)
 text <- readLines(file_path)
 docs <- Corpus(VectorSource(text))
+
+
+# Reads in Recent Grads data file 
+recent_grads <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
+
+
+

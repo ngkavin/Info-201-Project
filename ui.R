@@ -19,7 +19,7 @@ shinyUI(fluidPage(
       tabsetPanel(
         type = "tabs",
         tabPanel("Welcome!", plotOutput("word_cloud")),
-        tabPanel("Employment"),
+        tabPanel("Employment", plotlyOutput("employment_chart")),
         tabPanel("Wages"),
         tabPanel("Gender"),
         tabPanel("Popularity", plotlyOutput("popularity_plot"), actionButton("toggle", label = "Toggle Legend"))
