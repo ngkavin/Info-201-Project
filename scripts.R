@@ -12,5 +12,22 @@ r_major <- get_random_major()
 
 # Filters out the all_ages dataset to just Majors and their total in descending order
 majors <- select(all_ages, Major, Major_category, Total)
+<<<<<<< HEAD
+top_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
+top_twenty <- top_majors[1:20,]
+twenty_majors <- write.csv(top_twenty, file = "data/twenty_majors.csv")
+file_path <- "data/twenty_majors.csv"
+majors_twenty <- read.csv("data/twenty_majors.csv", stringsAsFactors = FALSE)
+text <- readLines(file_path)
+docs <- Corpus(VectorSource(text))
+
+
+# Reads in Recent Grads data file 
+recent_grads <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
+
+
+
+=======
 all_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
 all_majors$Major[1] <- gsub('BUSINESS MANAGEMENT AND ADMINISTRATION', 'BUSINESS MGMT', all_majors$Major[1])
+>>>>>>> dd20b83352ad22a7c77dbc3f07cd01baba61439e
