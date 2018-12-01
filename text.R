@@ -1,4 +1,5 @@
 # Welcome!
+summary <- "This is a preview of what our project is about which is exploring college "
 
 # Employment
 
