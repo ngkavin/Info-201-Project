@@ -7,7 +7,7 @@ The word cloud displayed shows all the majors based on their popularity.
 
 <br>Three questions that our project will answer are:
 <ol>1) What is the male:female ratio in popular majors?</ol>
-<ol>2) How does gender affect the salary of individuals with the same major?</ol>
+<ol>2) Does the popularity of majors correlate to wages?</ol>
 <ol>3) What are the employment statistics for a given major?</ol>"
 
 
