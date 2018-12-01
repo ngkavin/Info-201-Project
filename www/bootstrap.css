@@ -13,7 +13,7 @@
  */
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 html {
-    font-size: 14px;
+    font-size: 15px;
     font-family: sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -398,3 +398,4 @@ a:focus,
     display: block;
     width: 100%;
 }
+

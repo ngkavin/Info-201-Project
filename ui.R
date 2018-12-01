@@ -1,6 +1,7 @@
-library(plotly)
 library(shiny)
+library(plotly)
 library(dplyr)
+
 source("text.R")
 
 shinyUI(fluidPage(
@@ -10,14 +11,17 @@ shinyUI(fluidPage(
   tags$br(),
 
   sidebarLayout(
-    sidebarPanel(
-      width = 4,
-      selectizeInput("select",
-        label = "Lookup Major",
-        choices = NULL,
-        options = list(maxItems = 1, maxOptions = 5, items = NULL, openOnFocus = FALSE)
-      ),
-      actionButton("randomize", label = "Randomize"),
+    conditionalPanel(
+      condition="input.tabs != 'Welcome!'",
+      sidebarPanel(
+        width = 4,
+        selectizeInput("select",
+          label = "Lookup Major",
+          choices = NULL,
+          options = list(maxItems = 1, maxOptions = 5, items = NULL, openOnFocus = FALSE)
+        ),
+        actionButton("randomize", label = "Randomize")
+        ),
       conditionalPanel(
         HTML("<br>"),
         condition = "input.tabs == 'Popularity and Wages'",
