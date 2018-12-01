@@ -4,14 +4,14 @@ library(dplyr)
 source("text.R")
 
 shinyUI(fluidPage(
-  #theme = "bootstrap.css",
+  theme = "bootstrap.css",
   tags$br(),
   tags$h1(class="display-4", "Exploring College Majors"),
   tags$br(),
 
   sidebarLayout(
     sidebarPanel(
-      width = 3,
+      width = 4,
       selectizeInput("select",
         label = "Lookup Major",
         choices = NULL,
