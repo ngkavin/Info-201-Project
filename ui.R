@@ -11,35 +11,35 @@ shinyUI(fluidPage(
   tags$br(),
 
   sidebarLayout(
-    conditionalPanel(
-      condition = "input.tabs != 'Welcome!'",
-      sidebarPanel(
-        width = 4,
+    sidebarPanel(
+      width = 4,
+      conditionalPanel(
+        condition = "input.tabs != 'Welcome!'",
         selectizeInput("select",
-          label = "Lookup Major",
-          choices = NULL,
-          options = list(maxItems = 1, maxOptions = 5, items = NULL, openOnFocus = FALSE)
+                       label = "Lookup Major",
+                       choices = NULL,
+                       options = list(maxItems = 1, maxOptions = 5, items = NULL, openOnFocus = FALSE)
         ),
-        actionButton("randomize", label = "Randomize"),
-        conditionalPanel(
-          HTML("<br>"),
-          condition = "input.tabs == 'Popularity and Wages'",
-          selectInput("status",
-            label = "Select Graduate Status",
-            choices = list("Graduate" = "Grad", "Undergraduate" = "Nongrad"),
-            selected = "Nongrad"
+        actionButton("randomize", label = "Randomize")
+      ),
+      conditionalPanel(
+        HTML("<br>"),
+        condition = "input.tabs == 'Popularity and Wages'",
+        selectInput("status",
+          label = "Select Graduate Status",
+          choices = list("Graduate" = "Grad", "Undergraduate" = "Nongrad"),
+          selected = "Nongrad"
+        ),
+        selectInput("percent",
+          label = "Select Wage Distribution",
+          choices = list(
+            "25th Percentile" = "P25",
+            "50th Percentile" = "median",
+            "75th Percentile" = "P75"
           ),
-          selectInput("percent",
-            label = "Select Wage Distribution",
-            choices = list(
-              "25th Percentile" = "P25",
-              "50th Percentile" = "median",
-              "75th Percentile" = "P75"
-            ),
-            selected = "median"
-          ),
-          actionButton("toggle", label = "Toggle Legend")
-        )
+          selected = "median"
+        ),
+        actionButton("toggle", label = "Toggle Legend")
       )
     ),
 
@@ -47,7 +47,7 @@ shinyUI(fluidPage(
       tabsetPanel(
         id = "tabs",
         type = "tabs",
-        tabPanel("Welcome!", HTML(summary), img(src='students.jpeg'), plotOutput("word_cloud", width = "898", height = "870")),
+        tabPanel("Welcome!", HTML(summary), img(src = "students.jpeg"), plotOutput("word_cloud", width = "898", height = "870")),
         tabPanel("Employment", plotlyOutput("employment_chart")),
         tabPanel("Gender"),
         tabPanel("Popularity and Wages", tags$br(), plotlyOutput("popularity_plot"), tags$br(), HTML("<p>", pop1, "</p>"))
