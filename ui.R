@@ -47,18 +47,8 @@ shinyUI(fluidPage(
       tabsetPanel(
         id = "tabs",
         type = "tabs",
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-        tabPanel("Welcome!", plotOutput("word_cloud")),
+        tabPanel("Welcome!", HTML(summary), img(src='students.jpeg'), plotOutput("word_cloud", width = "898", height = "870")),
         tabPanel("Employment", plotlyOutput("employment_chart")),
-        tabPanel("Wages"),
-=======
-        tabPanel("Welcome!", HTML("<p align ='left'><br>", summary, "</p>"), plotOutput("word_cloud", width = "910", height = "900")),
-=======
-        tabPanel("Welcome!", HTML(summary), img(src='students.jpeg' align="right"), plotOutput("word_cloud", width = "898", height = "870")),
->>>>>>> Stashed changes
-        tabPanel("Employment"),
->>>>>>> dd20b83352ad22a7c77dbc3f07cd01baba61439e
         tabPanel("Gender"),
         tabPanel("Popularity and Wages", HTML("<br>"), plotlyOutput("popularity_plot"), tags$br(), tags$p(pop1))
       )
