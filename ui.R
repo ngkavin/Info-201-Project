@@ -54,7 +54,7 @@ shinyUI(fluidPage(
 >>>>>>> 9abef70aaa39bf2e026f694ec93758040dc5b5f9
         tabPanel("Employment", plotlyOutput("employment_chart")),
         tabPanel("Gender"),
-        tabPanel("Popularity and Wages", HTML("<br>"), plotlyOutput("popularity_plot"), tags$br(), tags$p(pop1))
+        tabPanel("Popularity and Wages", tags$br(), plotlyOutput("popularity_plot"), tags$br(), HTML("<p>", pop1, "</p>"))
       )
     )
   )
