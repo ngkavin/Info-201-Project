@@ -14,8 +14,9 @@ shinyUI(fluidPage(
     sidebarPanel(
       conditionalPanel(
         condition = "input.tabs == 'Welcome!'",
-      width = 4,
-      HTML(summary)
+      width = 5,
+      img(src='students.jpeg',style="width: 300px"), 
+      HTML("<br>", summary)
       ),
       conditionalPanel(
         condition = "input.tabs != 'Welcome!'",
@@ -51,7 +52,7 @@ shinyUI(fluidPage(
       tabsetPanel(
         id = "tabs",
         type = "tabs",
-        tabPanel("Welcome!", img(src = "students.jpeg"), plotOutput("word_cloud", width = "898", height = "870")),
+        tabPanel("Welcome!", plotOutput("word_cloud", width = "898", height = "870")),
         tabPanel("Employment", plotlyOutput("employment_chart")),
         tabPanel("Gender"),
         tabPanel("Popularity and Wages", tags$br(), plotlyOutput("popularity_plot"), tags$br(), HTML("<p>", pop1, "</p>"))
