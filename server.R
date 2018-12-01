@@ -98,13 +98,6 @@ shinyServer(function(input, output, session) {
       x = c("Full Time", "Part Time", "Full Time Year Round", "Unemployed"),
       y = c(majors$Full_time, majors$Part_time, majors$Full_time_year_round, majors$Unemployed)
     ) %>% 
-      marker = list(color = c(
-        "rgba(222,45,38,0.8)", "rgba(204,204,204,1)",
-        "rgba(204,204,204,1)"
-      )),
-      x = c("Full Time", "Part Time", "Full Time Year Round"),
-      y = c(majors$Full_time, majors$Part_time, majors$Full_time_year_round)
-    ) %>%
       layout(
         xaxis = list(title = "Employment Status"),
         yaxis = list(title = "Number of Recent Graduates")
