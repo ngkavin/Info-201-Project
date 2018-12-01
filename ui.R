@@ -47,10 +47,10 @@ shinyUI(fluidPage(
       tabsetPanel(
         id = "tabs",
         type = "tabs",
-        tabPanel("Welcome!", HTML("<p align ='left'><br>", summary, "</p>"), plotOutput("word_cloud", width = "910", height = "900")),
+        tabPanel("Welcome!", HTML(summary), img(src='students.jpeg'), plotOutput("word_cloud", width = "898", height = "870")),
         tabPanel("Employment", plotlyOutput("employment_chart")),
         tabPanel("Gender"),
-        tabPanel("Popularity and Wages", HTML("<br>"), plotlyOutput("popularity_plot"), tags$br(), tags$p(pop1))
+        tabPanel("Popularity and Wages", tags$br(), plotlyOutput("popularity_plot"), tags$br(), HTML("<p>", pop1, "</p>"))
       )
     )
   )
