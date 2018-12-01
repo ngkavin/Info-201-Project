@@ -12,11 +12,13 @@ r_major <- get_random_major()
 
 # Filters out the all_ages dataset to just Majors and their total in descending order
 majors <- select(all_ages, Major, Major_category, Total)
+all_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
+all_majors$Major[1] <- gsub('BUSINESS MANAGEMENT AND ADMINISTRATION', 'BUSINESS MGMT', all_majors$Major[1])
+
 
 
 # Reads in Recent Grads data file 
 recent_grads <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
-
 
 
 all_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
