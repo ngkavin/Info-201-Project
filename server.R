@@ -3,9 +3,6 @@ library(plotly)
 library(dplyr)
 library(wordcloud)
 
-
-
-suppressMessages(library(dplyr))
 source("scripts.R")
 
 shinyServer(function(input, output, session) {
@@ -33,6 +30,7 @@ shinyServer(function(input, output, session) {
 
   })
   
+  # Populates the major selection box
   updateSelectInput(session, "select", choices = split(majors_list, grad$Major_category))
   
   # Randomizes selected major if the randomize button is pressed
