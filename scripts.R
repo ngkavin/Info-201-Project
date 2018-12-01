@@ -31,3 +31,4 @@ recent_grads <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
 all_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
 all_majors$Major[1] <- gsub('BUSINESS MANAGEMENT AND ADMINISTRATION', 'BUSINESS MGMT', all_majors$Major[1])
 >>>>>>> dd20b83352ad22a7c77dbc3f07cd01baba61439e
+
