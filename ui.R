@@ -16,8 +16,7 @@ shinyUI(fluidPage(
       conditionalPanel(
         condition = "input.tabs == 'Welcome!'",
       width = 5,
-      img(src='students.jpeg',style="width: 300px"), 
-      HTML("<br>", summary)
+      HTML(summary)
       ),
       conditionalPanel(
         condition = "input.tabs != 'Welcome!'",
