@@ -46,3 +46,11 @@ However, graduates do earn more than undergraduates with an average
 median wage of $79,363.64 compared to $58,909.09, a $20,454.55 a year difference.
 (29.59% higher).
 "
+gender <- "This pie chart shows the ratio of men to women that are recent college
+graduates from a particular major. The pie chart can be adjusted to show the ratio 
+of men to women in any of the listed majors the user desires to view.
+<br><br>
+Looking at the ratio of men to women graduates from <b>engineering</b> majors it seems that
+the general trend is that women only make up ~25%, while men make up ~75%. In contrast, the 
+ratio of men to women in the <b>social sciences </b> and <b>arts</b> are flipped, where women make up
+the majority of those graduates."

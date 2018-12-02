@@ -102,7 +102,7 @@ shinyServer(function(input, output, session) {
   output$gender_chart <- renderPlotly({
     gender_grads1 <- filter(gender_grads1, Major == toupper(input$select))
     colors <- c('rgb(10, 147, 80)', 'rgb(115, 226, 172)')
-    po <- plot_ly(gender_grads1, labels = (colnames(gender_grads1[1:2])), values =(list(gender_grads1$Men,gender_grads1$Women)), type = 'pie',
+    pie_chart <- plot_ly(gender_grads1, labels = (colnames(gender_grads1[1:2])), values =(list(gender_grads1$Men,gender_grads1$Women)), type = 'pie',
                   insidetextfont = list(color = '#FFFFFF'),
                   marker = list(colors = colors,
                                 line = list(color = '#FFFFFF', width = 1),
