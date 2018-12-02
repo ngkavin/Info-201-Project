@@ -97,4 +97,19 @@ shinyServer(function(input, output, session) {
         yaxis = list(title = "Number of Recent Graduates")
       )
   })
+  
+  # Creates a pie chart to show the ratio of men to women in each major
+  output$gender_chart <- renderPlotly({
+    gender_grads1 <- filter(gender_grads1, Major == toupper(input$select))
+    colors <- c('rgb(10, 147, 80)', 'rgb(115, 226, 172)')
+    po <- plot_ly(gender_grads1, labels = (colnames(gender_grads1[1:2])), values =(list(gender_grads1$Men,gender_grads1$Women)), type = 'pie',
+                  insidetextfont = list(color = '#FFFFFF'),
+                  marker = list(colors = colors,
+                                line = list(color = '#FFFFFF', width = 1),
+                                textposition = 'inside')) %>%
+      layout(title = 'Ratio of Men to Women in Each Major',
+             xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+             yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+    
+  })
 })

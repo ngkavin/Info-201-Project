@@ -19,7 +19,8 @@ colnames(all_majors)[1] <- "word"
 
 # Reads in Recent Grads data file 
 recent_grads <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
-
+gender_grads1 <- recent_grads %>%
+  select(Men, Women, Major)
 
 all_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
 all_majors$Major[1] <- gsub('BUSINESS MANAGEMENT AND ADMINISTRATION', 'BUSINESS MGMT', all_majors$Major[1])
