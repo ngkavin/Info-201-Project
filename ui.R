@@ -4,7 +4,6 @@ library(dplyr)
 library(wordcloud2)
 
 source("text.R")
-
 shinyUI(fluidPage(
   theme = "bootstrap.css",
   tags$br(),
@@ -22,7 +21,7 @@ shinyUI(fluidPage(
         condition = "input.tabs != 'Welcome!'",
         selectizeInput("select",
                        label = "Lookup Major",
-                       choices = NULL,
+                       choices = split(majors_list, grad$Major_category),
                        options = list(maxItems = 1, maxOptions = 5, items = NULL, openOnFocus = FALSE)
         ),
         actionButton("randomize", label = "Randomize")

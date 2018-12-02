@@ -1,13 +1,12 @@
 library(shiny)
 library(plotly)
 library(dplyr)
-library(wordcloud)
 library(wordcloud2)
 
 source("scripts.R")
 
 shinyServer(function(input, output, session) {
-
+  print(split(majors_list, grad$Major_category))
   # Displays a word cloud of majors based on popularity
   output$word_cloud2 <- renderWordcloud2({
     all_majors <- wordcloud2(all_majors, size = .4, shape = 'circle', color = c(
@@ -30,10 +29,7 @@ shinyServer(function(input, output, session) {
     ))
     all_majors
   })
-
-  # Populates the major selection box
-  updateSelectInput(session, "select", choices = split(majors_list, grad$Major_category))
-
+  
   # Randomizes selected major if the randomize button is pressed
   observeEvent(input$randomize, {
     r_major <- get_random_major()
