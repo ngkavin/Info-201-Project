@@ -10,8 +10,7 @@ shinyServer(function(input, output, session) {
 
   # Displays a word cloud of majors based on popularity
   output$word_cloud2 <- renderWordcloud2({
-
-    all_majors <- wordcloud2(all_majors, size = .4, color = c(
+    all_majors <- wordcloud2(all_majors, size = .4, shape = 'square', color = c(
       "#64EDD9",
       "#5FE6CD",
       "#5AE0C1",
@@ -29,7 +28,6 @@ shinyServer(function(input, output, session) {
       "#198C25",
       "#15861A"
     ))
-    
     all_majors
   })
 

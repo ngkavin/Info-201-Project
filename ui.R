@@ -52,7 +52,7 @@ shinyUI(fluidPage(
       tabsetPanel(
         id = "tabs",
         type = "tabs",
-        tabPanel("Welcome!", wordcloud2Output("word_cloud2", width = "900", height = "500" )),
+        tabPanel("Welcome!", wordcloud2Output("word_cloud2", width = "100%", height = "500" )),
         tabPanel("Employment", plotlyOutput("employment_chart")),
         tabPanel("Gender", img(src="https://image.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg")),
         tabPanel("Popularity and Wages", tags$br(), plotlyOutput("popularity_plot"), tags$br(), HTML("<p>", pop1, "</p>"))
