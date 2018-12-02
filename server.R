@@ -10,7 +10,7 @@ shinyServer(function(input, output, session) {
 
   # Displays a word cloud of majors based on popularity
   output$word_cloud2 <- renderWordcloud2({
-    all_majors <- wordcloud2(all_majors, size = .4, shape = 'circle')
+    all_majors <- wordcloud2(all_majors, size = .4, shape = 'square')
     all_majors
   })
 
