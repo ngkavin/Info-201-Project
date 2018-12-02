@@ -2,35 +2,16 @@ library(shiny)
 library(plotly)
 library(dplyr)
 library(wordcloud)
+library(wordcloud2)
 
 source("scripts.R")
 
 shinyServer(function(input, output, session) {
 
   # Displays a word cloud of majors based on popularity
-  output$word_cloud <- renderPlot({
-    majors <- wordcloud(
-      words = all_majors$Major, freq = all_majors$Total, min.freq = 1,
-      scale = c(8, .01), max.words = 300, random.order = FALSE, random.color = TRUE, rot.per = .0,
-      colors = c(
-        "#64EDD9",
-        "#5FE6CD",
-        "#5AE0C1",
-        "#55D9B5",
-        "#50D3A9",
-        "#4BCC9D",
-        "#46C691",
-        "#41BF85",
-        "#3CB979",
-        "#37B36D",
-        "#32AC61",
-        "#2DA655",
-        "#289F49",
-        "#1E9231",
-        "#198C25",
-        "#15861A"
-      )
-    )
+  output$word_cloud2 <- renderWordcloud2({
+    all_majors <- wordcloud2(all_majors, size = .4, shape = 'circle')
+    all_majors
   })
 
   # Populates the major selection box
