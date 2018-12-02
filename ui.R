@@ -1,6 +1,7 @@
 library(shiny)
 library(plotly)
 library(dplyr)
+library(wordcloud2)
 
 source("text.R")
 
@@ -52,7 +53,7 @@ shinyUI(fluidPage(
       tabsetPanel(
         id = "tabs",
         type = "tabs",
-        tabPanel("Welcome!", plotOutput("word_cloud", width = "898", height = "870")),
+        tabPanel("Welcome!", wordcloud2Output("word_cloud2", width = "800", height = "500" )),
         tabPanel("Employment", plotlyOutput("employment_chart")),
         tabPanel("Gender", img(src="https://image.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg")),
         tabPanel("Popularity and Wages", tags$br(), plotlyOutput("popularity_plot"), tags$br(), HTML("<p>", pop1, "</p>"))
