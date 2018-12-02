@@ -14,7 +14,8 @@ r_major <- get_random_major()
 majors <- select(all_ages, Major, Major_category, Total)
 all_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
 all_majors$Major[1] <- gsub('BUSINESS MANAGEMENT AND ADMINISTRATION', 'BUSINESS MGMT', all_majors$Major[1])
-
+colnames(all_majors)[2] <- "freq"
+colnames(all_majors)[1] <- "word"
 
 
 # Reads in Recent Grads data file 
