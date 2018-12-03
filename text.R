@@ -22,7 +22,7 @@ the earnings of those who have earned a graduate degree or an undergraduate
 degree. The yearly wages can be adjusted to be the 25th, 75th, or 50th percentile
 (median) of earnings for their respective major.
 <br><br>
-Looking at undergraduate median wages, there does not seem to be a
+Looking at undergraduate <b>median</b> wages, there does <i>not</i> seem to be a
 significant corelation with the popularity of a major, and the wages
 that the degree holder earns. At the extremes, petroleum engineers
 have by far the highest median wage with $126k, but the major ranks
