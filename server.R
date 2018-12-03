@@ -91,6 +91,7 @@ shinyServer(function(input, output, session) {
   # Creates a bar chart to show employment status of recent graduates based on user input
   output$employment_chart <- renderPlotly({
      majors <- filter(recent_grads, Major == toupper(input$select))
+    # Adds up all employment statistics for all majors
     all_grads <- select(recent_grads, Full_time, Part_time, Full_time_year_round, Unemployed) %>% colSums()
     all_grads <- as.data.frame(t(as.data.frame(all_grads)))
     salsa <- if (input$select != "") {
@@ -117,14 +118,24 @@ shinyServer(function(input, output, session) {
   
   # Creates a pie chart to show the ratio of men to women in each major
   output$gender_chart <- renderPlotly({
-    gender_grads1 <- filter(gender_grads1, Major == toupper(input$select))
+    gender_grads_major <- filter(gender_grads1, Major == toupper(input$select))
+    # Adds up all men and women for all of the majors
+    gender_grads_all <- select(gender_grads1, Men, Women) %>% colSums(na.rm = TRUE)
+    gender_grads_all <- as.data.frame(t(as.data.frame(gender_grads_all)))
+    if (input$select != "") {
+      g_data <- list(gender_grads_major$Men,gender_grads_major$Women)
+      g_title <- paste('Ratio of Men to Women for', input$select)
+    } else {
+      g_data <- list(gender_grads_all$Men,gender_grads_all$Women)
+      g_title <- 'Ratio of Men to Women for All Recent College Graduates'
+    }
     colors <- c('rgb(10, 147, 80)', 'rgb(115, 226, 172)')
-    pie_chart <- plot_ly(gender_grads1, labels = (colnames(gender_grads1[1:2])), values =(list(gender_grads1$Men,gender_grads1$Women)), type = 'pie',
+    pie_chart <- plot_ly(gender_grads1, labels = (colnames(gender_grads1[1:2])), values = g_data, type = 'pie',
                   insidetextfont = list(color = '#FFFFFF'),
                   marker = list(colors = colors,
                                 line = list(color = '#FFFFFF', width = 1),
                                 textposition = 'inside')) %>%
-      layout(title = 'Ratio of Men to Women in Each Major',
+      layout(title = g_title,
              xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
              yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
     
