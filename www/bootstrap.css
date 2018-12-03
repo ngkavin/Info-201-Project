@@ -401,4 +401,12 @@ a:focus,
     width: 100%;
 }
 
+.butt_contain {
+    display:flex;
+    justify-content: space-between;
+}
+
+#randomize {
+    margin-right:2%;
+}
 
