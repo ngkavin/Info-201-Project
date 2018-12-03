@@ -3,13 +3,19 @@ summary <- "This is a preview of what our project is about as it contains:
 <ul>Information about the <b>majors</b> that college students have taken</ul>
 <ul>Statistics about these students such as a breakdown in <i>gender</i> and <i>wages</i>.</ul>
 
-The word cloud displayed shows all the majors based on their popularity.
-
 <br>Three questions that our project will answer are:
-<ol>1) What is the male:female ratio in popular majors?</ol>
-<ol>2) Does the popularity of majors correlate to wages?</ol>
-<ol>3) What are the employment statistics for a given major?</ol>"
+<ol>1) What are the employment statistics for a given major?</ol>
+<ol>2) What is the male to female ratio in popular majors?</ol>
+<ol>3) Does the popularity of majors correlate to wages?</ol>
 
+These questions will benefit our <font color = 'green'>target</font> audience which are
+<i>students who have yet to declare their major</i> (<i>or incoming college students</i>)<br><br>
+<font size ='2' color = 'gray'>Data was taken from FiveThirtyEight's 
+<a href ='https://github.com/fivethirtyeight/data/tree/9e9cee37d0695ccc6866c67f38373675231758ab/college-majors'>repository</a>
+on Github</font>"
+
+# Word cloud description
+cloud_summary <- "The word cloud displayed shows all the majors based on their popularity."
 
 # Employment
 
