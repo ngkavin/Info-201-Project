@@ -6,7 +6,6 @@ library(wordcloud2)
 source("scripts.R")
 
 shinyServer(function(input, output, session) {
-  print(split(majors_list, grad$Major_category))
   # Displays a word cloud of majors based on popularity
   output$word_cloud2 <- renderWordcloud2({
     all_majors <- wordcloud2(all_majors, size = .4, shape = 'circle', color = c(
@@ -29,13 +28,21 @@ shinyServer(function(input, output, session) {
     ))
     all_majors
   })
-  
   # Randomizes selected major if the randomize button is pressed
   observeEvent(input$randomize, {
     r_major <- get_random_major()
     updateSelectInput(session, "select", selected = r_major)
   })
-
+  
+  # opens popup box that displays all availible majors in alphabetical order
+  observeEvent(input$popup,{
+    showModal(modalDialog(
+      title = "Major List",
+      easyClose = TRUE,
+      HTML(paste(unlist(sort(majors_list)), collapse = "<br>"))
+    ))
+  })
+    
   # Creates the popularity vs median salary plot with plotly
   output$popularity_plot <- renderPlotly({
     wage_dist <- paste(input$status, input$percent, sep = "_")
