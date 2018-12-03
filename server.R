@@ -94,10 +94,12 @@ shinyServer(function(input, output, session) {
     # Adds up all employment statistics for all majors
     all_grads <- select(recent_grads, Full_time, Part_time, Full_time_year_round, Unemployed) %>% colSums()
     all_grads <- as.data.frame(t(as.data.frame(all_grads)))
-    salsa <- if (input$select != "") {
-      c(majors$Full_time, majors$Part_time, majors$Full_time_year_round, majors$Unemployed)
+    if (input$select != "") {
+      e_data <- c(majors$Full_time, majors$Part_time, majors$Full_time_year_round, majors$Unemployed)
+      e_title <- paste("Employment Statistics for", input$select)  
     } else {
-      c(all_grads$Full_time, all_grads$Part_time, all_grads$Full_time_year_round, all_grads$Unemployed)
+      e_data <- c(all_grads$Full_time, all_grads$Part_time, all_grads$Full_time_year_round, all_grads$Unemployed)
+      e_title <- paste("Employment Statistics for All Majors")  
     }
 
     bar_chart <- plot_ly(
@@ -106,10 +108,10 @@ shinyServer(function(input, output, session) {
     marker = list(color = c('rgba(222,45,38,0.8)', 'rgba(204,204,204,1)',
                             'rgba(204,204,204,1)','rgba(222,45,38,0.8)')),
     x = c("Full Time", "Part Time", "Full Time Year Round", "Unemployed"),
-    y = salsa
+    y = e_data
     ) %>% 
     layout(
-      title = "Employment Status Based on Majors",
+      title = e_title,
       xaxis = list(title = "Employment Status"),
       yaxis = list(title = "Number of Recent Graduates")
     )
