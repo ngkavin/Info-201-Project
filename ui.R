@@ -2,8 +2,9 @@ library(shiny)
 library(plotly)
 library(dplyr)
 library(wordcloud2)
-
 source("text.R")
+source("scripts.R")
+
 shinyUI(fluidPage(
   theme = "bootstrap.css",
   tags$br(),
@@ -19,12 +20,19 @@ shinyUI(fluidPage(
       ),
       conditionalPanel(
         condition = "input.tabs != 'Welcome!'",
+        # Create a search box for looking up a major. Also shows the category
         selectizeInput("select",
                        label = "Lookup Major",
-                       choices = split(majors_list, grad$Major_category),
+                       choices = select_choices,
                        options = list(maxItems = 1, maxOptions = 5, items = NULL, openOnFocus = FALSE)
         ),
-        actionButton("randomize", label = "Randomize")
+        # Creates a div that contains 2 buttons
+        tags$div(class = "butt_contain", 
+        # Picks a random major on click
+        actionButton("randomize", label = "Randomize"),
+        # Shows a popup box of all the availible majors
+        actionButton("popup", "Show Majors")
+        )
       ),
       conditionalPanel(
         HTML("<br>"),
