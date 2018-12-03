@@ -9,6 +9,7 @@ shinyUI(fluidPage(
   theme = "bootstrap.css",
   tags$br(),
   tags$h1(class = "display-4", "Exploring College Majors"),
+  tags$h5("By Carmelita, Kavin, Maddy, and Rawuda"),
   tags$br(),
 
   sidebarLayout(
@@ -54,7 +55,7 @@ shinyUI(fluidPage(
         actionButton("toggle", label = "Toggle Legend")
       )
     ),
-
+    #
     mainPanel(
       tabsetPanel(
         id = "tabs",

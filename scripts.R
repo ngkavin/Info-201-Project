@@ -22,3 +22,23 @@ colnames(all_majors)[1] <- "word"
 recent_grads <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)
 gender_grads1 <- recent_grads %>%
   select(Men, Women, Major)
+
+# color palette for word cloud
+w_color <-c(
+  "#64EDD9",
+  "#5FE6CD",
+  "#5AE0C1",
+  "#55D9B5",
+  "#50D3A9",
+  "#4BCC9D",
+  "#46C691",
+  "#41BF85",
+  "#3CB979",
+  "#37B36D",
+  "#32AC61",
+  "#2DA655",
+  "#289F49",
+  "#1E9231",
+  "#198C25",
+  "#15861A"
+)

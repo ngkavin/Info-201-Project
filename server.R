@@ -8,24 +8,7 @@ source("scripts.R")
 shinyServer(function(input, output, session) {
   # Displays a word cloud of majors based on popularity
   output$word_cloud2 <- renderWordcloud2({
-    all_majors <- wordcloud2(all_majors, size = .4, shape = 'circle', color = c(
-      "#64EDD9",
-      "#5FE6CD",
-      "#5AE0C1",
-      "#55D9B5",
-      "#50D3A9",
-      "#4BCC9D",
-      "#46C691",
-      "#41BF85",
-      "#3CB979",
-      "#37B36D",
-      "#32AC61",
-      "#2DA655",
-      "#289F49",
-      "#1E9231",
-      "#198C25",
-      "#15861A"
-    ))
+    all_majors <- wordcloud2(all_majors, size = .4, shape = 'circle', color = w_color)
     all_majors
   })
   # Randomizes selected major if the randomize button is pressed
@@ -43,7 +26,7 @@ shinyServer(function(input, output, session) {
     ))
   })
     
-  # Creates the popularity vs median salary plot with plotly
+  # Creates the popularity vs median salary plot with plotly. Points colored based on major category
   output$popularity_plot <- renderPlotly({
     wage_dist <- paste(input$status, input$percent, sep = "_")
     total_dist <- paste0(input$status, "_total")
@@ -56,6 +39,7 @@ shinyServer(function(input, output, session) {
       text = majors_list,
       color = ~Major_category
     ) %>%
+      # Removes the plotly bar the appears on hover
       config(displayModeBar = FALSE) %>%
       layout(
         title = "Does a More Popular Major Equal Higher Wages?",
@@ -105,8 +89,8 @@ shinyServer(function(input, output, session) {
     bar_chart <- plot_ly(
     data = recent_grads,
     type = "bar",
-    marker = list(color = c('rgba(222,45,38,0.8)', 'rgba(204,204,204,1)',
-                            'rgba(204,204,204,1)','rgba(222,45,38,0.8)')),
+    marker = list(color = c('rgba(120,194,174,1)', 'rgba(120,194,174,1)',
+                            'rgba(120,194,174,1)','rgba(204,204,204,1)')),
     x = c("Full Time", "Part Time", "Full Time Year Round", "Unemployed"),
     y = e_data
     ) %>% 
@@ -114,8 +98,9 @@ shinyServer(function(input, output, session) {
       title = e_title,
       xaxis = list(title = "Employment Status"),
       yaxis = list(title = "Number of Recent Graduates")
-    )
-
+    ) %>% 
+    # Removes the plotly bar the appears on hover
+    config(displayModeBar = FALSE)
   })
   
   # Creates a pie chart to show the ratio of men to women in each major
@@ -124,6 +109,7 @@ shinyServer(function(input, output, session) {
     # Adds up all men and women for all of the majors
     gender_grads_all <- select(gender_grads1, Men, Women) %>% colSums(na.rm = TRUE)
     gender_grads_all <- as.data.frame(t(as.data.frame(gender_grads_all)))
+    # Adjust data and title depending on if a major is selected or not
     if (input$select != "") {
       g_data <- list(gender_grads_major$Men,gender_grads_major$Women)
       g_title <- paste('Ratio of Men to Women for', input$select)
@@ -139,7 +125,9 @@ shinyServer(function(input, output, session) {
                                 textposition = 'inside')) %>%
       layout(title = g_title,
              xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-             yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+             yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)) %>% 
+      # Removes the plotly bar that appears on hover.
+      config(displayModeBar = FALSE)
     
   })
 })
