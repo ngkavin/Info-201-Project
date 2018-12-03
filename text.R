@@ -9,7 +9,7 @@ summary <- "This is a preview of what our project is about as it contains:
 <ol>3) Does the popularity of majors correlate to wages?</ol>
 
 These questions will benefit our <font color = 'green'>target</font> audience which are
-<i>students who have yet to declare their major</i> (<i>or incoming college students</i>)<br><br>
+<i>students who have yet to declare their major</i> (<i>or incoming college students</i>).<br><br>
 <font size ='2' color = 'gray'>Data was taken from FiveThirtyEight's 
 <a href ='https://github.com/fivethirtyeight/data/tree/9e9cee37d0695ccc6866c67f38373675231758ab/college-majors'>repository</a>
 on Github</font>"
@@ -31,25 +31,25 @@ degree. The yearly wages can be adjusted to be the 25th, 75th, or 50th percentil
 Looking at undergraduate <b>median</b> wages, there does <i>not</i> seem to be a
 significant corelation with the popularity of a major, and the wages
 that the degree holder earns. At the extremes, petroleum engineers
-have by far the highest median wage with $126k, but the major ranks
-as the 134th most popular out of the 173 majors tracked.
-Business Management and Administration is by far the mst popular major
-with just under 3 million undergraduate degree holders, but at a median
-wage of $60k a year, it is only the 62nd highest earning major. This
+have by far the highest median wage with <b>$126k</b>, but the major ranks
+as the <b>134th</b> most popular out of the 173 majors tracked.
+Business Management and Administration is <i>by far</i> the mst popular major
+with just under <b>3 million</b> undergraduate degree holders, but at a median
+wage of <b>$60k</b> a year, it is only the 62nd highest earning major. This
 by no means is low, but it does not explain the popularity of this
 particular major.
 <br><br>
-There are only 22 majors with more than 500,000 undergraduate degree
-holders, and they earn an average of $58,909.09 a year, which is only $325.57
-more than the average median wage across all of the majors, $58,583.82, a
+There are only <i>22</i> majors with more than 500,000 undergraduate degree
+holders, and they earn an average of <b>$58,909.09</b> a year, which is only <b>$325.57</b>
+more than the average median wage across all of the majors, <b>$58,583.82</b>, a
 0.55% difference.
 <br><br>
 These results are similar among the graduate degree holders where there is
 no significant correlation between the popularity of a major and the wages
 earned. The most popular major, Psychology ranks 133 in wages, and the highest
 earning major, Health and Medical Preparatory programs, ranks 50th in popularity.
-However, graduates do earn more than undergraduates with an average
-median wage of $79,363.64 compared to $58,909.09, a $20,454.55 a year difference.
+However, graduates do earn more than undergraduates with an average median wage of
+<b>$79,363.64</b> compared to <b>$58,909.09</b>, a <b>$20,454.55</b> a year difference.
 (29.59% higher).
 "
 gender <- "This pie chart shows the ratio of men to women that are recent college
