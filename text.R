@@ -54,3 +54,10 @@ Looking at the ratio of men to women graduates from <b>engineering</b> majors it
 the general trend is that women only make up ~25%, while men make up ~75%. In contrast, the 
 ratio of men to women in the <b>social sciences </b> and <b>arts</b> are flipped, where women make up
 the majority of those graduates."
+
+employment <- "This bar chart shows the the amount of recent graduates that are employed compared to those
+that are unemployed based on the major they graduated with. The chart breaks down to those that are
+employed full-time, full-time-year-round and part-time employed.
+<br><br>
+For the majority of majors listed, students who graduate end up with a full-time job. But these numbers do
+vary due to the sample size of each major varying."

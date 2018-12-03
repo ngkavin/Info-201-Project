@@ -100,9 +100,15 @@ shinyServer(function(input, output, session) {
       y = c(majors$Full_time, majors$Part_time, majors$Full_time_year_round, majors$Unemployed)
     ) %>% 
       layout(
+        title = "Employment Status Based on Majors",
         xaxis = list(title = "Employment Status"),
         yaxis = list(title = "Number of Recent Graduates")
       )
+    # if(majors == "") {
+    #   majors <- filter(recent_grads, Major == toupper("ACTUARIAL SCIENCE"))
+    # } else{
+    #   majors <- majors
+    # }
   })
   
   # Creates a pie chart to show the ratio of men to women in each major

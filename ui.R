@@ -60,7 +60,7 @@ shinyUI(fluidPage(
         id = "tabs",
         type = "tabs",
         tabPanel("Welcome!", wordcloud2Output("word_cloud2", width = "900", height = "500" )),
-        tabPanel("Employment", plotlyOutput("employment_chart")),
+        tabPanel("Employment", plotlyOutput("employment_chart"), HTML("<p>", employment, "</p>")),
         tabPanel("Gender", tags$br(), plotlyOutput("gender_chart"), HTML("<p>", gender, "</p>")),
         tabPanel("Popularity and Wages", tags$br(), plotlyOutput("popularity_plot"), tags$br(), HTML("<p>", pop1, "</p>"))
       )
