@@ -10,9 +10,10 @@ summary <- "This is a preview of what our project is about as it contains:
 
 These questions will benefit our <font color = 'green'>target</font> audience which are
 <i>students who have yet to declare their major</i> (<i>or incoming college students</i>).<br><br>
-<font size ='2' color = 'gray'>Data was taken from FiveThirtyEight's 
-<a href ='https://github.com/fivethirtyeight/data/tree/9e9cee37d0695ccc6866c67f38373675231758ab/college-majors'>repository</a>
-on Github</font>"
+This app is based on a college majors data dataset provided by FiveThirtyEight through their
+<a href ='https://github.com/fivethirtyeight/data/tree/9e9cee37d0695ccc6866c67f38373675231758ab/college-majors'>Github </a>
+repository, with data that origininated from the US Census' 2010-2012 
+<a href = 'https://www.census.gov/programs-surveys/acs/data/pums.html'>Public Use Microdata Series.</a>"
 
 # Word cloud description
 cloud_summary <- "The word cloud displayed shows all the majors based on their popularity."
