@@ -13,7 +13,12 @@ shinyServer(function(input, output, session) {
   })
   # Randomizes selected major if the randomize button is pressed
   observeEvent(input$randomize, {
-    r_major <- get_random_major()
+    r_major <- 
+      if (input$checkbox == TRUE) {
+        get_random_stem_major()
+      } else {
+        get_random_major()
+      }
     updateSelectInput(session, "select", selected = r_major)
   })
   
@@ -22,7 +27,11 @@ shinyServer(function(input, output, session) {
     showModal(modalDialog(
       title = "Major List",
       easyClose = TRUE,
-      HTML(paste(unlist(sort(majors_list)), collapse = "<br>"))
+      if (input$checkbox == TRUE) {
+        HTML(paste(unlist(sort(stem_majors_list)), collapse = "<br>"))
+      } else {
+        HTML(paste(unlist(sort(majors_list)), collapse = "<br>"))
+      }
     ))
   })
     
@@ -109,25 +118,51 @@ shinyServer(function(input, output, session) {
     # Adds up all men and women for all of the majors
     gender_grads_all <- select(gender_grads1, Men, Women) %>% colSums(na.rm = TRUE)
     gender_grads_all <- as.data.frame(t(as.data.frame(gender_grads_all)))
-    # Adjust data and title depending on if a major is selected or not
-    if (input$select != "") {
-      g_data <- list(gender_grads_major$Men,gender_grads_major$Women)
-      g_title <- paste('Ratio of Men to Women for', input$select)
-    } else {
-      g_data <- list(gender_grads_all$Men,gender_grads_all$Women)
-      g_title <- 'Ratio of Men to Women for All Recent College Graduates'
-    }
+    
+    gender_grads_stem <- filter(gender_stem_grads, Major == toupper(input$select))
+    # Adds up all men and women for all of the STEM majors
+    gender_grads_stem_all <- select(gender_stem_grads, Men, Women) %>% colSums(na.rm = TRUE)
+    gender_grads_stem_all <- as.data.frame(t(as.data.frame(gender_grads_stem_all)))
+    # Check if checkbox is selected to show STEM MAjors only, if not it selects all Majors
+    if (input$checkbox == FALSE) {
+      # Adjust data and title depending on if a major is selected or not
+      if (input$select != "") {
+        g_data <- list(gender_grads_major$Men,gender_grads_major$Women)
+        g_title <- paste('Ratio of Men to Women for', input$select)
+      } else {
+        g_data <- list(gender_grads_all$Men,gender_grads_all$Women)
+        g_title <- 'Ratio of Men to Women for All Recent College Graduates'
+      } 
     colors <- c('rgb(10, 147, 80)', 'rgb(115, 226, 172)')
     pie_chart <- plot_ly(gender_grads1, labels = (colnames(gender_grads1[1:2])), values = g_data, type = 'pie',
-                  insidetextfont = list(color = '#FFFFFF'),
-                  marker = list(colors = colors,
+                         insidetextfont = list(color = '#FFFFFF'),
+                         marker = list(colors = colors,
                                 line = list(color = '#FFFFFF', width = 1),
                                 textposition = 'inside')) %>%
-      layout(title = g_title,
-             xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-             yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)) %>% 
-      # Removes the plotly bar that appears on hover.
-      config(displayModeBar = FALSE)
-    
-  })
+    layout(title = g_title,
+               xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+               yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)) %>% 
+        # Removes the plotly bar that appears on hover.
+    config(displayModeBar = FALSE)
+    } else {
+        if (input$select != "") {
+          g_data <- list(gender_grads_stem$Men,gender_grads_stem$Women)
+          g_title <- paste('Ratio of Men to Women for', input$select)
+        } else {
+          g_data <- list(gender_grads_stem_all$Men,gender_grads_stem_all$Women)
+          g_title <- 'Ratio of Men to Women for All Recent STEM College Graduates'
+        }
+    colors <- c('rgb(10, 147, 80)', 'rgb(115, 226, 172)')
+    pie_chart <- plot_ly(gender_stem_grads, labels = (colnames(gender_stem_grads[1:2])), values = g_data, type = 'pie',
+                         insidetextfont = list(color = '#FFFFFF'),
+                         marker = list(colors = colors,
+                                         line = list(color = '#FFFFFF', width = 1),
+                                         textposition = 'inside')) %>%
+    layout(title = g_title,
+               xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+               yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)) %>% 
+          # Removes the plotly bar that appears on hover.
+    config(displayModeBar = FALSE)
+    }
+})
 })
