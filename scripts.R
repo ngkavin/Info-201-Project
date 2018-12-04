@@ -8,9 +8,9 @@ women_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
 majors_list <- sapply(tolower(grad$Major), tools::toTitleCase)
 majors_list <- as.data.frame(majors_list, stringsAsFactors = FALSE)$majors_list
 # Function picks a major from the majors_list at random and returns it.
-get_random_major <- function() {majors_list[sample(1:length(majors_list), 1)]}
+get_random_major <- function(m_list) {m_list[sample(1:length(m_list), 1)]}
 select_choices <- split(majors_list, grad$Major_category)
-
+select_choices_stem <- split(stem_majors_list, women_stem$Major_category)
 # Filters out the all_ages dataset to just Majors and their total in descending order
 majors <- select(all_ages, Major, Major_category, Total)
 all_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
@@ -22,13 +22,10 @@ colnames(all_majors)[1] <- "word"
 stem_majors_list <- sapply(tolower(women_stem$Major), tools::toTitleCase)
 stem_majors_list <- as.data.frame(stem_majors_list, stringsAsFactors = FALSE)$stem_majors_list
 # Function picks a major from the stem_majors_list at random and returns it.
-get_random_stem_major <- function() {stem_majors_list[sample(1:length(stem_majors_list), 1)]}
 select_stem_choices <- split(stem_majors_list, women_stem$Major_category)
 
 # Selects the Men and Women column in STEM Majors
 gender_stem_grads <- women_stem %>% select(Men, Women, Major)
-
-
 
 # Reads in Recent Grads data file 
 recent_grads <- read.csv("data/recent-grads.csv", stringsAsFactors = FALSE)

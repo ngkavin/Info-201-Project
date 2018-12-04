@@ -15,11 +15,20 @@ shinyServer(function(input, output, session) {
   observeEvent(input$randomize, {
     r_major <- 
       if (input$checkbox == TRUE) {
-        get_random_stem_major()
+        get_random_major(stem_majors_list)
+        #updateSelectInput(session, "select", choices = list("STEM" = stem_majors_list))
       } else {
-        get_random_major()
+        get_random_major(majors_list)
       }
     updateSelectInput(session, "select", selected = r_major)
+  })
+  
+  observeEvent(input$checkbox, {
+    if (input$checkbox == TRUE) {
+      updateSelectInput(session, "select", choices = select_choices_stem)
+    } else {
+      updateSelectInput(session, "select", choices = select_choices)
+    }
   })
   
   # opens popup box that displays all availible majors in alphabetical order
