@@ -38,7 +38,7 @@ shinyUI(fluidPage(
         )
       ),
       conditionalPanel(
-        condition = "input.tabs == 'Gender'",
+        condition = "input.tabs == 'Gender' | input.tabs == 'Employment'",
         checkboxInput("checkbox", label = "STEM Majors", value = FALSE)
       ),
       conditionalPanel(

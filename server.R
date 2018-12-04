@@ -97,12 +97,21 @@ shinyServer(function(input, output, session) {
     # Adds up all employment statistics for all majors
     all_grads <- select(recent_grads, Full_time, Part_time, Full_time_year_round, Unemployed) %>% colSums()
     all_grads <- as.data.frame(t(as.data.frame(all_grads)))
+    
+    # Filters out only stem majors
+    all_grads_stem <- filter(recent_grads, Major %in% toupper(stem_majors_list))
+    all_grads_stem <- select(all_grads_stem, Full_time, Part_time, Full_time_year_round, Unemployed) %>% colSums()
+    all_grads_stem <- as.data.frame(t(as.data.frame(all_grads_stem)))
+    
     if (input$select != "") {
       e_data <- c(majors$Full_time, majors$Part_time, majors$Full_time_year_round, majors$Unemployed)
       e_title <- paste("Employment Statistics for", input$select)
+    } else if (input$checkbox == TRUE) {
+      e_data <- c(all_grads_stem$Full_time, all_grads_stem$Part_time, all_grads_stem$Full_time_year_round, all_grads_stem$Unemployed)
+      e_title <- "Employment Statistics for STEM Majors"
     } else {
       e_data <- c(all_grads$Full_time, all_grads$Part_time, all_grads$Full_time_year_round, all_grads$Unemployed)
-      e_title <- paste("Employment Statistics for All Majors")
+      e_title <- "Employment Statistics for All Majors"
     }
 
     bar_chart <- plot_ly(
