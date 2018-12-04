@@ -16,24 +16,25 @@ shinyUI(fluidPage(
     sidebarPanel(
       conditionalPanel(
         condition = "input.tabs == 'Welcome!'",
-      width = 5,
-      HTML(summary)
+        width = 5,
+        HTML(summary)
       ),
       conditionalPanel(
         condition = "input.tabs != 'Welcome!'",
         # Create a search box for looking up a major. Also shows the category
-        
+
         selectizeInput("select",
-                       label = "Lookup Major",
-                       choices = select_choices,
-                       options = list(maxItems = 1, maxOptions = 5, items = NULL, openOnFocus = FALSE)
+          label = "Lookup Major",
+          choices = select_choices,
+          options = list(maxItems = 1, maxOptions = 5, items = NULL, openOnFocus = FALSE)
         ),
         # Creates a div that contains 2 buttons
-        tags$div(class = "butt_contain", 
-        # Picks a random major on click
-                 actionButton("randomize", label = "Randomize"),
-        # Shows a popup box of all the available majors
-                 actionButton("popup", "Show Majors")
+        tags$div(
+          class = "butt_contain",
+          # Picks a random major on click
+          actionButton("randomize", label = "Randomize"),
+          # Shows a popup box of all the available majors
+          actionButton("popup", "Show Majors")
         )
       ),
       conditionalPanel(
@@ -65,7 +66,7 @@ shinyUI(fluidPage(
       tabsetPanel(
         id = "tabs",
         type = "tabs",
-        tabPanel("Welcome!", wordcloud2Output("word_cloud2", width = "900", height = "500" )),
+        tabPanel("Welcome!", wordcloud2Output("word_cloud2", width = "900", height = "500")),
         tabPanel("Employment", tags$br(), plotlyOutput("employment_chart"), HTML("<p>", employment, "</p>")),
         tabPanel("Gender", tags$br(), plotlyOutput("gender_chart"), HTML("<p>", gender, "</p>")),
         tabPanel("Popularity and Wages", tags$br(), plotlyOutput("popularity_plot"), tags$br(), HTML("<p>", pop1, "</p>"))
