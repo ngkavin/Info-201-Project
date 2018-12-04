@@ -2,6 +2,7 @@
 
 all_ages <- read.csv("data/all-ages.csv", stringsAsFactors = FALSE)
 grad <- read.csv("data/grad-students.csv", stringsAsFactors = FALSE)
+women_stem <- read.csv("data/women-stem.csv", stringsAsFactors = FALSE)
 
 # Entries are given in all caps. This will change the major names to be in "title case"
 majors_list <- sapply(tolower(grad$Major), tools::toTitleCase)
@@ -16,6 +17,17 @@ all_majors <- majors %>% arrange(desc(Total)) %>% select(Major, Total)
 all_majors$Major[1] <- gsub('BUSINESS MANAGEMENT AND ADMINISTRATION', 'BUSINESS MGMT', all_majors$Major[1])
 colnames(all_majors)[2] <- "freq"
 colnames(all_majors)[1] <- "word"
+
+# Entries are given in all caps. This will change the stem major names to be in "title case"
+stem_majors_list <- sapply(tolower(women_stem$Major), tools::toTitleCase)
+stem_majors_list <- as.data.frame(stem_majors_list, stringsAsFactors = FALSE)$stem_majors_list
+# Function picks a major from the stem_majors_list at random and returns it.
+get_random_stem_major <- function() {stem_majors_list[sample(1:length(stem_majors_list), 1)]}
+select_stem_choices <- split(stem_majors_list, women_stem$Major_category)
+
+# Selects the Men and Women column in STEM Majors
+gender_stem_grads <- women_stem %>% select(Men, Women, Major)
+
 
 
 # Reads in Recent Grads data file 
