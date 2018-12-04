@@ -22,6 +22,7 @@ shinyUI(fluidPage(
       conditionalPanel(
         condition = "input.tabs != 'Welcome!'",
         # Create a search box for looking up a major. Also shows the category
+        
         selectizeInput("select",
                        label = "Lookup Major",
                        choices = select_choices,
@@ -30,10 +31,14 @@ shinyUI(fluidPage(
         # Creates a div that contains 2 buttons
         tags$div(class = "butt_contain", 
         # Picks a random major on click
-        actionButton("randomize", label = "Randomize"),
-        # Shows a popup box of all the availible majors
-        actionButton("popup", "Show Majors")
+                 actionButton("randomize", label = "Randomize"),
+        # Shows a popup box of all the available majors
+                 actionButton("popup", "Show Majors")
         )
+      ),
+      conditionalPanel(
+        condition = "input.tabs == 'Gender'",
+        checkboxInput("checkbox", label = "STEM Majors", value = FALSE)
       ),
       conditionalPanel(
         HTML("<br>"),
