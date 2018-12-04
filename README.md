@@ -15,3 +15,4 @@ What are the employment statistics for a given major? (Unemployment/wages)
 
   For the first question, we are using a statistical analysis to find female and male ratios between each major and finding relationships with each major correlating to the distribution in gender. We are also using a statistical analysis with the third question to find out which majors lead to the most economical success, and which majors have the highest rate of unemployment.
 
+The app can be found at: https://ngkavin.shinyapps.io/info201-final-project/
