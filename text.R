@@ -5,14 +5,14 @@ summary <- "This is a preview of what our project is about as it contains:
 
 <br>Three questions that our project will answer are:
 <ol>1) What are the employment statistics for a given major?</ol>
-<ol>2) What is the male to female ratio in popular majors?</ol>
+<ol>2) What is the male to female ratio for given majors?</ol>
 <ol>3) Does the popularity of majors correlate to wages?</ol>
 
 These questions will benefit our <font color = 'green'>target</font> audience which are
 <i>students who have yet to declare their major</i> (<i>or incoming college students</i>).<br><br>
 This app is based on a college majors data dataset provided by FiveThirtyEight through their
 <a href ='https://github.com/fivethirtyeight/data/tree/9e9cee37d0695ccc6866c67f38373675231758ab/college-majors'>Github </a>
-repository, with data that origininated from the US Census' 2010-2012 
+repository, with data that originated from the US Census' 2010-2012 
 <a href = 'https://www.census.gov/programs-surveys/acs/data/pums.html'>Public Use Microdata Series.</a>"
 
 # Word cloud description
