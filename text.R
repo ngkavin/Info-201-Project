@@ -16,11 +16,9 @@ repository, with data that originated from the US Census' 2010-2012
 <a href = 'https://www.census.gov/programs-surveys/acs/data/pums.html'>Public Use Microdata Series.</a>"
 
 # Word cloud description
-cloud_summary <- "The word cloud displayed shows all the majors based on their popularity."
-
-# Employment
-
-# Gender
+cloud_summary <- "<font size = '2'>Note: The word cloud displayed shows all the majors based on their popularity. The most popular major is
+<font color = '#64EDD9'><b>Business Management And Administration</b></font> with <i>3,123,510 students</i>.
+The least popular major is <font color = '#64EDD9'><b>School Student Counseling</b></font> with <i>2,396 students</i>.</font>"
 
 # Popularity and Wages
 pop1 <- "This graph shows the relationship between the popularity of a major,
@@ -30,11 +28,11 @@ degree. The yearly wages can be adjusted to be the 25th, 75th, or 50th percentil
 (median) of earnings for their respective major.
 <br><br>
 Looking at undergraduate <b>median</b> wages, there does <i>not</i> seem to be a
-significant corelation with the popularity of a major, and the wages
+significant correlation with the popularity of a major, and the wages
 that the degree holder earns. At the extremes, petroleum engineers
 have by far the highest median wage with <b>$126k</b>, but the major ranks
 as the <b>134th</b> most popular out of the 173 majors tracked.
-Business Management and Administration is <i>by far</i> the mst popular major
+Business Management and Administration is <i>by far</i> the most popular major
 with just under <b>3 million</b> undergraduate degree holders, but at a median
 wage of <b>$60k</b> a year, it is only the 62nd highest earning major. This
 by no means is low, but it does not explain the popularity of this
@@ -53,6 +51,8 @@ However, graduates do earn more than undergraduates with an average median wage 
 <b>$79,363.64</b> compared to <b>$58,909.09</b>, a <b>$20,454.55</b> a year difference.
 (29.59% higher).
 "
+
+# Gender
 gender <- "This pie chart shows the ratio of men to women that are recent college
 graduates from a particular major. The pie chart can be adjusted to show the ratio 
 of men to women in any of the listed majors the user desires to view.
@@ -60,11 +60,17 @@ of men to women in any of the listed majors the user desires to view.
 Looking at the ratio of men to women graduates from <b>engineering</b> majors it seems that
 the general trend is that women only make up ~25%, while men make up ~75%. In contrast, the 
 ratio of men to women in the <b>social sciences </b> and <b>arts</b> are flipped, where women make up
-the majority of those graduates."
+the majority of those graduates.<br><br>
+Overall, as shown on the pie chart <font color = 'red'>women</font> dominate 
+<font color = 'blue'>men</font> with all the majors as <i>57.5%</i> of women
+are recent college graduates whereas men make up <i>42.5%</i>.<br><br>
+However, for STEM Majors only, men dominate by small percentage compared to women as the ratio
+for recent college graduates in STEM make up <i>50.2%</i> of men and <i>49.8%</i> of women."
 
-employment <- "This bar chart shows the the amount of recent graduates that are <b>employed</b> compared to those
+# Employment
+employment <- "This bar chart shows the amount of recent graduates that are <b>employed</b> compared to those
 that are <b>unemployed</b> based on the major they graduated with. The chart breaks down to those that are
-employed full-time, full-time-year-round and part-time employed.
+employed full-time, full-time-year-round, and part-time employed.
 <br><br>
 For the majority of majors listed, students who graduate end up with a full-time job and few students in each
 major end up unemployed. These numbers do vary from major to major due to the sample size that was 
